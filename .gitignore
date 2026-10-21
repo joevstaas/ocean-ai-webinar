@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+work/
+.token_cache*
+__pycache__/
