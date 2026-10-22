@@ -4,12 +4,13 @@ HUB Ocean webinar, 22 October 2026, 15:30–16:15 CEST. Presented by Jo Øvstaas
 
 ## Presentation
 
-Open [the HTML presentation](outputs/webinar-slides-draft.html) in a browser after downloading or cloning this repository. It currently contains 14 draft slides.
+Open [the HTML presentation](outputs/webinar-slides-draft.html) in a browser after downloading or cloning this repository. It currently contains 17 draft slides.
 
 - Arrow keys: previous/next slide.
 - **N**: presenter notes. **F**: fullscreen.
 - Click a screenshot to enlarge; use Close or Escape to return.
-- Slide 11 contains a copyable dataset-discovery prompt.
+- Slide 12 contains a copyable dataset-discovery prompt. Slide 14 contains a copyable ingest prompt.
+- Maritime **Live demo** buttons show presenter reminders on selected slides.
 
 Fonts and slide images are embedded, so the slides can be viewed offline. Demo prototypes and external links require internet access. Private ODP dataset links require the appropriate account permissions.
 

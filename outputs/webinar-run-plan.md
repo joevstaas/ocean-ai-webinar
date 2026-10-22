@@ -98,7 +98,7 @@ Example collection: [joevstaas/awesome-claude-skills](https://github.com/joevsta
 
 **Confirmed by Jo:** Both independent experiments used the same prompt. Present this as “Same prompt. Two independent runs. Different data decisions.” Model and tool configurations have not been established as identical.
 
-**Evidence:** Two saved HTML prototypes and their Markdown audits, located in `the local project folder`.
+**Evidence:** Two saved HTML prototypes and their Markdown audits, located in `/Users/joovstaas/Projects cowork/ocean-ai-webinar`.
 
 The comparison is based on static inspection of the saved HTML and audits. Original live API responses and historical map states have not been independently verified. Do not present configured limits as actual retrieved record counts.
 
