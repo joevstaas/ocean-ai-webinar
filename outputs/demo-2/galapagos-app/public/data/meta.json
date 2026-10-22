@@ -1,0 +1,86 @@
+{
+ "retrieved_at": "2026-10-22T11:02:49+00:00",
+ "collection_id": "0d46fc5f-8a50-49bf-ab2a-73ac2c8da690",
+ "collection_url": "https://app.hubocean.earth/catalog/collection/0d46fc5f-8a50-49bf-ab2a-73ac2c8da690",
+ "study_bbox": [
+  -93.608,
+  -2.595,
+  -87.324,
+  3.996
+ ],
+ "datasets": {
+  "ntz2000": {
+   "id": "c3bb5ad5-eb6e-4306-ae1f-85ac3dadfd8b",
+   "name": "Galápagos Marine Reserve No-Take Zones – Zoning Plan 2000 (research interpretation, Moity 2018)",
+   "description": "Polygons of the 60 No-Take Zones (14 conservation subzones 2.1 and 46 tourism subzones 2.2) of the Galápagos Marine Reserve under Zoning Plan 2000, as interpreted by Moity (2018) to resolve overlapping use subzones. Source: PANGAEA, https://doi.org/10.1594/PANGAEA.886891 (CC BY-SA 3.0 Unported). Reprojected from UTM 15S (EPSG:32715) to WGS84.\n\nIMPORTANT: This is a research interpretation of Zoning Plan 2000, published in 2018. It is NOT an official or currently legally authoritative representation of Galápagos Marine Reserve protection boundaries; Zoning Plan 2000 has since been replaced.",
+   "provider": "Pangaea",
+   "license": "CC BY-SA 3.0 Unported (Creative Commons Attribution Share Alike 3.0 Unported)",
+   "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "citations": [
+    {
+     "text": "Moity, Nicolas (2018): No-Take Zones in the Galapagos Marine Reserve, Zoning plan 2000. PANGAEA, https://doi.org/10.1594/PANGAEA.886891",
+     "link": "https://doi.org/10.1594/PANGAEA.886891"
+    }
+   ],
+   "url": "https://app.hubocean.earth/catalog/dataset/c3bb5ad5-eb6e-4306-ae1f-85ac3dadfd8b"
+  },
+  "protectedseas": {
+   "id": "a608f54b-75c7-4df9-a3a8-cedbfa391873",
+   "name": "ProtectedSeas Navigator V2 — Focused: Area-Based Protections",
+   "description": "Navigator is the most comprehensive global map of marine life protections, with regulatory information for marine protected areas (MPAs) and marine managed areas (MMAs) worldwide. It catalogs boundary and regulation information for maritime areas that manage the extraction of natural living resources. Navigator enables comparisons through standardized ratings of fishing protection for each area, providing actionable insights into the state of conservation of the global ocean.\n\nThis version refines the dataset by excluding large-scale jurisdictional and fishery management zones (category_type = \"Jurisdictional Authority Area\", \"Fisheries Management Area\") as well as entries classified under country = \"Global\", \"High Seas / International\". The result is a more focused and performant view of localized marine protections. The complete database, which includes all area categories, is linked below.",
+   "provider": "ProtectedSeas",
+   "license": "CC-BY-4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "citations": [
+    {
+     "text": "ProtectedSeas® Navigator GIS layers are provided on the Ocean Data Platform under the license CC-BY-4.0",
+     "link": ""
+    }
+   ],
+   "url": "https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873"
+  },
+  "gfw_yearly": {
+   "id": "5a873571-1f58-4257-b636-4571b669faf8",
+   "name": "GFW AIS-based Apparent Fishing Effort - yearly summary 2012-2024",
+   "description": "This dataset is a derived summary of version 3.0 (March 2025 release) of the Global Fishing Watch apparent fishing effort dataset. A lightweight, wide-format spatial dataset with one row per 0.1°×0.1° grid cell, containing total vessel hours and fishing hours aggregated by year (2012–2024), Designed for fast map visualisation and year-over-year fishing effort comparisons.",
+   "provider": "HUB Ocean",
+   "license": "CC-BY-NC-4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "citations": [],
+   "url": "https://app.hubocean.earth/catalog/dataset/5a873571-1f58-4257-b636-4571b669faf8"
+  },
+  "gfw_2024": {
+   "id": "6b84a740-926a-46e6-bc5e-01c5eac3c9b8",
+   "name": "GFW AIS-based Apparent Fishing Effort - 2024 - derived summary",
+   "description": "This dataset is a derived summary of version 3.0 (March 2025 release) of the Global Fishing Watch apparent fishing effort dataset. GFW Fishing Effort 2024 Summary is a cell-level (0.1°×0.1° grid cell) annual summary of global fishing activity for 2024, containing aggregated AIS vessel presence, fishing effort, gear-type breakdowns, dominant gear and flag-state categories, and key activity metrics to support mapping, exploration, and analysis.",
+   "provider": "HUB Ocean",
+   "license": "CC-BY-NC-4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "citations": [],
+   "url": "https://app.hubocean.earth/catalog/dataset/6b84a740-926a-46e6-bc5e-01c5eac3c9b8"
+  },
+  "gfw_monthly": {
+   "id": "48a20311-3564-4045-b472-de775ecee31c",
+   "name": "GFW AIS-based Apparent Fishing Effort - monthly - derived summary",
+   "description": "This dataset is a derived summary of version 3.0 (March 2025 release) of the Global Fishing Watch apparent fishing effort dataset. Cell-level monthly summary of Global Fishing Watch AIS-derived fishing effort (2012–2024), with one row per 0.1° grid cell. Includes aggregated vessel presence hours and apparent fishing hours by month, plus activity summary fields for temporal analysis and mapping.",
+   "provider": "HUB Ocean",
+   "license": "CC-BY-NC-4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "citations": [],
+   "url": "https://app.hubocean.earth/catalog/dataset/48a20311-3564-4045-b472-de775ecee31c"
+  }
+ },
+ "counts": {
+  "protected_areas": 5,
+  "ntz2000": 60,
+  "grid_cells_fetched": 3705,
+  "grid_cells_with_fishing": 2895
+ },
+ "methods": [
+  "Protected areas: ProtectedSeas polygons fully within lon -95.0..-86.0, lat -4.0..4.0; invalid geometries repaired with make_valid.",
+  "Fishing effort: GFW 0.1° grid cells fully within the study box (protected areas' envelope + 0.6°).",
+  "A cell counts as 'inside' an area when its centroid falls inside the polygon; 'surrounding' = centroid in a 25 km ring outside the boundary (EPSG:6933).",
+  "Historical no-take zones: sum of fishing hours in every 0.1° cell that intersects the zone — far coarser than the zones themselves.",
+  "Top flags 2024 are approximate: built from each cell's top-3 flags only."
+ ]
+}
