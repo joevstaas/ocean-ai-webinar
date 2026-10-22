@@ -4,7 +4,7 @@ HUB Ocean webinar, 22 October 2026, 15:30–16:15 CEST. Presented by Jo Øvstaas
 
 ## Presentation
 
-Open [the HTML presentation](outputs/webinar-slides-draft.html) in a browser after downloading or cloning this repository. It currently contains 17 draft slides.
+Open [the HTML presentation](outputs/webinar-slides-draft.html) in a browser after downloading or cloning this repository. It currently contains 18 draft slides.
 
 - Arrow keys: previous/next slide.
 - **N**: presenter notes. **F**: fullscreen.
