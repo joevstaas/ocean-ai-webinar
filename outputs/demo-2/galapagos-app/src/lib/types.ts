@@ -25,23 +25,56 @@ export interface Stats {
   areas: AreaStats[];
 }
 
-export interface DatasetMeta {
+export interface OdpRecord {
   id: string;
   name: string;
-  description: string;
+  url: string;
   provider: string | null;
   license: string | null;
   license_url: string | null;
   citations: { text: string; link: string }[];
-  url: string;
+  documentation: string[];
+  constraints: string[];
+  visibility: string | null;
+  updated_at: string | null;
+  collection: { id: string; name: string; url: string } | null;
 }
+
+/** Where the data came from before it reached ODP. */
+export interface Origin {
+  title: string | null;
+  publisher: string | null;
+  url: string | null;
+  doi?: string | null;
+  citation?: string | null;
+  creator?: string | null;
+  published?: string | null;
+  download_url?: string | null;
+  license?: string | null;
+  related_publication?: string | null;
+  checksum_sha256?: string | null;
+  methodology?: string[];
+  source_updated?: string | null;
+}
+
+export interface DatasetMeta extends OdpRecord {
+  description: string;
+  parent: OdpRecord | null;
+  origin: Origin;
+  query: { filter: string | null; rows: number };
+}
+
+export type DatasetKey = "ntz2000" | "protectedseas" | "gfw_yearly" | "gfw_2024" | "gfw_monthly";
 
 export interface Meta {
   retrieved_at: string;
+  generated_by: { script: string; odp_sdk: string; odp_api: string };
   collection_id: string;
   collection_url: string;
+  collection: { id: string; name: string; visibility: string | null; url: string };
   study_bbox: number[];
-  datasets: Record<"ntz2000" | "protectedseas" | "gfw_yearly" | "gfw_2024" | "gfw_monthly", DatasetMeta>;
+  datasets: Record<DatasetKey, DatasetMeta>;
+  outputs: { file: string; from: DatasetKey[]; description: string; bytes: number; sha256: string }[];
   counts: Record<string, number>;
   methods: string[];
 }

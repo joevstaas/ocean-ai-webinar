@@ -2,7 +2,7 @@
 import Link from "next/link";
 import type { AreaStats, NtzProps, ProtectedAreaProps } from "@/lib/types";
 import { ACTIVITY_CODE, ACTIVITY_LABELS, density, fmt, fmtHours, parseLinks, PROTECTION_LEVELS, regulationLines, trendRows } from "@/lib/format";
-import { FISHING_CAVEAT, HISTORICAL_WARNING, LATEST_YEAR, stats } from "@/lib/data";
+import { FISHING_CAVEAT, HISTORICAL_WARNING, LATEST_YEAR, meta, stats } from "@/lib/data";
 import { DensityTrend, MonthBars, ShareList, YearBars } from "./charts";
 
 const TONE: Record<string, string> = {
@@ -82,6 +82,41 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
   );
 }
 
+const EXT = "text-sky-800 hover:underline";
+
+/** Where one record comes from: its id in the ODP dataset and in the original source. */
+export function SourceRecord({ kind, id }: { kind: "area" | "ntz"; id: { label: string; value: string }[] }) {
+  const d = meta.datasets[kind === "area" ? "protectedseas" : "ntz2000"];
+  const doi = d.origin.doi ? `https://doi.org/${d.origin.doi}` : null;
+  return (
+    <Section title="Source record">
+      <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-xs">
+        {id.map((x) => (
+          <div key={x.label} className="contents">
+            <dt className="text-slate-500">{x.label}</dt>
+            <dd className="break-all font-mono text-slate-800">{x.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="mt-2 text-xs leading-snug text-slate-600">
+        From ODP dataset{" "}
+        <a className={EXT} href={d.url} target="_blank" rel="noreferrer">
+          {d.name}
+        </a>
+        {" "}({d.license}). Original:{" "}
+        <a className={EXT} href={doi ?? d.origin.url ?? d.url} target="_blank" rel="noreferrer">
+          {d.origin.publisher}
+          {doi ? ` doi:${d.origin.doi}` : ""}
+        </a>
+        .{" "}
+        <Link className={EXT} href="/about">
+          Full lineage →
+        </Link>
+      </p>
+    </Section>
+  );
+}
+
 export function AreaPanel({ props, s, year }: { props: ProtectedAreaProps; s: AreaStats; year: number }) {
   const y = String(year);
   const prev = String(year - 1);
@@ -157,6 +192,15 @@ export function AreaPanel({ props, s, year }: { props: ProtectedAreaProps; s: Ar
         )}
         {props.last_update && <p className="mt-2 text-[11px] text-slate-500">ProtectedSeas record last updated {String(props.last_update).slice(0, 10)}.</p>}
       </Section>
+
+      <SourceRecord
+        kind="area"
+        id={[
+          { label: "ProtectedSeas site_id", value: props.site_id },
+          ...(props.wdpa_id ? [{ label: "WDPA id", value: String(props.wdpa_id) }] : []),
+          ...(props.last_reviewed ? [{ label: "Last reviewed", value: String(props.last_reviewed).slice(0, 10) }] : []),
+        ]}
+      />
     </div>
   );
 }
@@ -186,6 +230,14 @@ export function NtzPanel({ props, year }: { props: NtzProps; year: number }) {
           {year}: <b className="tabular-nums">{fmtHours(series[String(year)] ?? 0)} h</b> in overlapping cells.
         </p>
       </Section>
+
+      <SourceRecord
+        kind="ntz"
+        id={[
+          { label: "Feature Id (Moity 2018)", value: String(props.source_id) },
+          { label: "ODP row id", value: props.id },
+        ]}
+      />
     </div>
   );
 }

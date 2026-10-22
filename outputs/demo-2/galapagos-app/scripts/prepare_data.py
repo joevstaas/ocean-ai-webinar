@@ -5,8 +5,11 @@ Usage:  python3 -I scripts/prepare_data.py [path-to-.env] [output-dir]
 Reads ODP_API_KEY from the given .env, or the nearest .env above this app (never printed). Writes small GeoJSON/JSON
 files that the Next.js app serves statically, so no key ever reaches the browser.
 """
+import hashlib
+import importlib.metadata
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 
@@ -52,6 +55,115 @@ DATASETS = {
 }
 COLLECTION_ID = "0d46fc5f-8a50-49bf-ab2a-73ac2c8da690"
 SEARCH_BOX = box(-95, -4, -86, 4)
+PORTAL = "https://app.hubocean.earth/catalog"
+PORTAL_DATASET = re.compile(r"app\.hubocean\.earth/catalog/dataset/([0-9a-f-]{36})")
+
+# What each static file in public/data is built from (checksums are added at write time)
+OUTPUTS = [
+    {"file": "protected_areas.geojson", "from": ["protectedseas"],
+     "description": "ProtectedSeas polygons and rules; display geometry simplified to ~200 m."},
+    {"file": "ntz2000.geojson", "from": ["ntz2000", "gfw_yearly"],
+     "description": "Zoning Plan 2000 no-take zones (display geometry ~30 m) with fishing hours in overlapping cells."},
+    {"file": "fishing_cells.geojson", "from": ["gfw_yearly", "gfw_2024"],
+     "description": "0.1° cells with any apparent fishing 2012–2024, yearly hours and 2024 top gear/flag."},
+    {"file": "features.json", "from": ["protectedseas", "ntz2000"],
+     "description": "Attribute-only copies of the area and zone records for panels and briefings."},
+    {"file": "stats.json", "from": ["protectedseas", "gfw_yearly", "gfw_monthly", "gfw_2024"],
+     "description": "Per-area inside/surrounding summaries computed from full-resolution boundaries."},
+]
+
+
+def catalog(client, dataset_id):
+    r = client._request(requests.Request("GET", f"{client.base_url}/api/catalog/v2/datasets/{dataset_id}"), retry=False)
+    r.raise_for_status()
+    return r.json()
+
+
+def odp_record(d):
+    """The catalogue facts we cite for an ODP dataset."""
+    lic = d.get("license") or {}
+    col = d.get("collection") or {}
+    return {
+        "id": d["id"],
+        "name": d.get("name"),
+        "url": f"{PORTAL}/dataset/{d['id']}",
+        "provider": (d.get("provider") or {}).get("name"),
+        "license": lic.get("enum_val") or lic.get("name"),
+        "license_url": lic.get("url"),
+        "citations": [c for c in d.get("citations") or [] if c.get("text")],
+        "documentation": d.get("documentation") or [],
+        "constraints": [c["text"] for c in d.get("constraints") or [] if c.get("text")],
+        "visibility": d.get("visibility"),
+        "updated_at": (d.get("audit_fields") or {}).get("updated_at"),
+        "collection": {"id": col.get("id"), "name": col.get("name"), "url": f"{PORTAL}/collection/{col.get('id')}"} if col.get("id") else None,
+    }
+
+
+def parent_dataset_id(d):
+    """ODP datasets point to the dataset they were derived from ("Child of" or a portal link in documentation)."""
+    ai = d.get("additional_info") or {}
+    for text in [ai.get("Child of", "")] + list(d.get("documentation") or []):
+        m = PORTAL_DATASET.search(text or "")
+        if m and m.group(1) != d["id"]:
+            return m.group(1)
+    return None
+
+
+def original_source(key, d, parent):
+    """The source outside ODP, taken from the catalogue entries rather than typed in by hand."""
+    ai = d.get("additional_info") or {}
+    if key == "ntz2000":
+        return {
+            "title": ai.get("source_title"),
+            "creator": ai.get("author"),
+            "publisher": ai.get("publisher"),
+            "published": ai.get("publication_date"),
+            "doi": ai.get("source_doi"),
+            "url": ai.get("source_landing_page") or f"https://doi.org/{ai.get('source_doi')}",
+            "download_url": ai.get("source_download_url"),
+            "license": ai.get("original_licence"),
+            "related_publication": ai.get("related_publication"),
+            "checksum_sha256": ai.get("original_archive_sha256"),
+            "citation": (d.get("citations") or [{}])[0].get("text"),
+        }
+    if key == "protectedseas":
+        docs = d.get("documentation") or []
+        return {
+            "title": "ProtectedSeas Navigator",
+            "publisher": "ProtectedSeas",
+            "url": docs[0] if docs else "https://navigatormap.org/",
+            "methodology": docs[1:],
+            "source_updated": ai.get("last_update.date"),
+            "citation": (d.get("citations") or [{}])[0].get("text"),
+        }
+    # GFW summaries: the original is the GFW release cited by the parent "source data" dataset on ODP
+    src = parent or d
+    cit = (src.get("citations") or [{}])[0]
+    pages = [u for u in src.get("documentation") or [] if "globalfishingwatch.org" in u]
+    return {
+        "title": cit.get("text"),
+        "publisher": "Global Fishing Watch",
+        "url": pages[0] if pages else None,
+        "doi": cit.get("link", "").removeprefix("https://doi.org/") or None,
+        "citation": cit.get("text"),
+    }
+
+
+def dataset_lineage(client, key, dataset_id):
+    d = catalog(client, dataset_id)
+    pid = parent_dataset_id(d)
+    parent = catalog(client, pid) if pid else None
+    rec = odp_record(d)
+    rec["description"] = d.get("description")
+    rec["parent"] = odp_record(parent) if parent else None
+    rec["origin"] = original_source(key, d, parent)
+    return rec
+
+
+def file_digest(path):
+    with open(path, "rb") as f:
+        data = f.read()
+    return {"bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()}
 
 
 def select(client, dataset_id, filt=None, cols=None):
@@ -109,26 +221,17 @@ def main(env_path, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     retrieved_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
-    # --- Catalogue metadata for attribution -----------------------------------
-    meta_ds = {}
-    for key, i in DATASETS.items():
-        r = client._request(requests.Request("GET", f"{client.base_url}/api/catalog/v2/datasets/{i}"), retry=False)
-        r.raise_for_status()
-        d = r.json()
-        lic = d.get("license") or {}
-        meta_ds[key] = {
-            "id": i,
-            "name": d.get("name"),
-            "description": d.get("description"),
-            "provider": (d.get("provider") or {}).get("name"),
-            "license": lic.get("enum_val") or lic.get("name"),
-            "license_url": lic.get("url"),
-            "citations": d.get("citations") or [],
-            "url": f"https://app.hubocean.earth/catalog/dataset/{i}",
-        }
+    # --- Catalogue metadata and lineage (dataset -> parent ODP dataset -> original source)
+    meta_ds = {key: dataset_lineage(client, key, i) for key, i in DATASETS.items()}
+    r = client._request(requests.Request("GET", f"{client.base_url}/api/catalog/v2/data-collections/{COLLECTION_ID}"), retry=False)
+    r.raise_for_status()
+    collection = {"id": COLLECTION_ID, "name": r.json().get("name"), "visibility": r.json().get("visibility"),
+                  "url": f"{PORTAL}/collection/{COLLECTION_ID}"}
 
     # --- Protected areas (ProtectedSeas, current) -----------------------------
-    ps = select(client, DATASETS["protectedseas"], f'geometry within "{SEARCH_BOX.wkt}"')
+    ps_filter = f'geometry within "{SEARCH_BOX.wkt}"'
+    ps = select(client, DATASETS["protectedseas"], ps_filter)
+    meta_ds["protectedseas"]["query"] = {"filter": ps_filter, "rows": len(ps)}
     ps = gpd.GeoDataFrame(ps, geometry=ps["geometry"].map(to_geom), crs="EPSG:4326")
     ps["geometry"] = ps.geometry.make_valid()
     ps_m = ps.to_crs(METRIC_CRS)
@@ -141,6 +244,7 @@ def main(env_path, out_dir):
 
     # --- Historical no-take zones (your collection) ----------------------------
     ntz = select(client, DATASETS["ntz2000"])
+    meta_ds["ntz2000"]["query"] = {"filter": None, "rows": len(ntz)}
     ntz = gpd.GeoDataFrame(ntz, geometry=ntz["geometry"].map(to_geom), crs="EPSG:4326")
 
     # --- GFW fishing effort -----------------------------------------------------
@@ -148,6 +252,8 @@ def main(env_path, out_dir):
     yearly = select(client, DATASETS["gfw_yearly"], gf)
     s24 = select(client, DATASETS["gfw_2024"], gf)
     monthly = select(client, DATASETS["gfw_monthly"], gf)
+    for key, df in (("gfw_yearly", yearly), ("gfw_2024", s24), ("gfw_monthly", monthly)):
+        meta_ds[key]["query"] = {"filter": gf, "rows": len(df)}
 
     cells = gpd.GeoDataFrame(yearly, geometry=yearly["geometry"].map(to_geom), crs="EPSG:4326")
     keep24 = ["cell_id", "mmsi_present_2024", "top_gear_1", "top_flag_1", "peak_month", "months_active"] + GEAR_COLS + [
@@ -240,10 +346,16 @@ def main(env_path, out_dir):
 
     meta = {
         "retrieved_at": retrieved_at,
+        "generated_by": {"script": "scripts/prepare_data.py", "odp_sdk": importlib.metadata.version("odp-sdk"),
+                         "odp_api": client.base_url},
         "collection_id": COLLECTION_ID,
-        "collection_url": f"https://app.hubocean.earth/catalog/collection/{COLLECTION_ID}",
+        "collection_url": f"{PORTAL}/collection/{COLLECTION_ID}",
+        "collection": collection,
         "study_bbox": [round(v, 3) for v in (minx, miny, maxx, maxy)],
         "datasets": meta_ds,
+        "outputs": [
+            {**o, **file_digest(os.path.join(out_dir, o["file"]))} for o in OUTPUTS
+        ],
         "counts": {"protected_areas": len(ps), "ntz2000": len(ntz), "grid_cells_fetched": len(cells), "grid_cells_with_fishing": len(active)},
         "methods": [
             f"Protected areas: ProtectedSeas polygons fully within lon {SEARCH_BOX.bounds[0]}..{SEARCH_BOX.bounds[2]}, lat {SEARCH_BOX.bounds[1]}..{SEARCH_BOX.bounds[3]}; invalid geometries repaired with make_valid.",

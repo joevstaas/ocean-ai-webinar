@@ -141,7 +141,10 @@ export default async function Brief({ params }: PageProps<"/brief/[siteId]/[year
           <SourcesList compact />
         </div>
         <p className="mt-3 text-[11px] text-slate-500">
-          Retrieved from Ocean Data Platform {meta.retrieved_at.slice(0, 10)}. A cell counts as inside when its centre
+          Area record: ProtectedSeas site_id <span className="font-mono">{p.site_id}</span>
+          {p.wdpa_id ? <> (WDPA {p.wdpa_id})</> : null} in ODP dataset{" "}
+          <span className="font-mono">{meta.datasets.protectedseas.id}</span>. Retrieved from Ocean Data Platform{" "}
+          {meta.retrieved_at.slice(0, 10)}; full lineage at /about. A cell counts as inside when its centre
           lies within the boundary. Apparent fishing does not by itself indicate illegal activity.
         </p>
       </footer>
