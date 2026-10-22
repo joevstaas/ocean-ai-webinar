@@ -1,0 +1,12 @@
+{
+  "dataset_id": "88bd5bcb-fc4d-42f7-903c-2e639620dd43",
+  "attached": true,
+  "files": {
+    "GMR_Zoning2000_NTZ.zip": "7e4e288b-f49",
+    "galapagos_no_take_zones_2000_wgs84.geojson": "354ce6e3-3b0",
+    "provenance.json": "9fca064e-f2e"
+  },
+  "verified": true,
+  "row_count": 60,
+  "url": "https://app.hubocean.earth/catalog/dataset/88bd5bcb-fc4d-42f7-903c-2e639620dd43"
+}

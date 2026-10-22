@@ -18,6 +18,7 @@ Fonts and slide images are embedded, so the slides can be viewed offline. Demo p
 
 - [Run plan](outputs/webinar-run-plan.md): 45-minute agenda, demo steps and presenter guidance.
 - [Demo 1](outputs/demo-1/): two independently generated Galápagos map prototypes and their audits.
+- [Demo 2](outputs/demo-2/galapagos-app/): Next.js web app for a marine park manager — Global Fishing Watch apparent fishing effort in and around Galápagos protected areas (ProtectedSeas), with the historical Zoning Plan 2000 no-take zones. Data from ODP; see its README for setup.
 
 Demo 1 compares different data choices made from the same prompt. Its audits primarily inspect the saved code, not preserved original API responses. The presentation copies use Esri Ocean basemap tiles; the audits document this change from the original CARTO basemap. Live data services may be slow or unavailable.
 

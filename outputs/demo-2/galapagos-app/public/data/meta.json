@@ -1,0 +1,391 @@
+{
+ "retrieved_at": "2026-10-22T13:13:42+00:00",
+ "generated_by": {
+  "script": "scripts/prepare_data.py",
+  "odp_sdk": "0.28.9",
+  "odp_api": "https://api.hubocean.earth"
+ },
+ "collection_id": "0d46fc5f-8a50-49bf-ab2a-73ac2c8da690",
+ "collection_url": "https://app.hubocean.earth/catalog/collection/0d46fc5f-8a50-49bf-ab2a-73ac2c8da690",
+ "collection": {
+  "id": "0d46fc5f-8a50-49bf-ab2a-73ac2c8da690",
+  "name": "Galápagos Ocean Data: An AI Workflow Demo",
+  "visibility": "private",
+  "url": "https://app.hubocean.earth/catalog/collection/0d46fc5f-8a50-49bf-ab2a-73ac2c8da690"
+ },
+ "study_bbox": [
+  -93.608,
+  -2.595,
+  -87.324,
+  3.996
+ ],
+ "datasets": {
+  "ntz2000": {
+   "id": "c3bb5ad5-eb6e-4306-ae1f-85ac3dadfd8b",
+   "name": "Galápagos Marine Reserve No-Take Zones – Zoning Plan 2000 (research interpretation, Moity 2018)",
+   "url": "https://app.hubocean.earth/catalog/dataset/c3bb5ad5-eb6e-4306-ae1f-85ac3dadfd8b",
+   "provider": "Pangaea",
+   "license": "CC BY-SA 3.0 Unported (Creative Commons Attribution Share Alike 3.0 Unported)",
+   "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "citations": [
+    {
+     "text": "Moity, Nicolas (2018): No-Take Zones in the Galapagos Marine Reserve, Zoning plan 2000. PANGAEA, https://doi.org/10.1594/PANGAEA.886891",
+     "link": "https://doi.org/10.1594/PANGAEA.886891"
+    }
+   ],
+   "documentation": [
+    "https://doi.org/10.1594/PANGAEA.886891",
+    "https://doi.org/10.3389/fmars.2018.00244"
+   ],
+   "constraints": [
+    "Research interpretation of the Galápagos Marine Reserve Zoning Plan 2000, published in 2018 (Moity). NOT current, official or legally authoritative protection boundaries; do not use for enforcement, navigation or compliance.",
+    "Licensed CC BY-SA 3.0 Unported: cite Moity (2018), doi:10.1594/PANGAEA.886891; derivative works must be shared alike."
+   ],
+   "visibility": "private",
+   "updated_at": "2026-10-21T17:21:28.53204Z",
+   "collection": {
+    "id": "0d46fc5f-8a50-49bf-ab2a-73ac2c8da690",
+    "name": "Galápagos Ocean Data: An AI Workflow Demo",
+    "url": "https://app.hubocean.earth/catalog/collection/0d46fc5f-8a50-49bf-ab2a-73ac2c8da690"
+   },
+   "description": "Polygons of the 60 No-Take Zones (14 conservation subzones 2.1 and 46 tourism subzones 2.2) of the Galápagos Marine Reserve under Zoning Plan 2000, as interpreted by Moity (2018) to resolve overlapping use subzones. Source: PANGAEA, https://doi.org/10.1594/PANGAEA.886891 (CC BY-SA 3.0 Unported). Reprojected from UTM 15S (EPSG:32715) to WGS84.\n\nIMPORTANT: This is a research interpretation of Zoning Plan 2000, published in 2018. It is NOT an official or currently legally authoritative representation of Galápagos Marine Reserve protection boundaries; Zoning Plan 2000 has since been replaced.",
+   "parent": null,
+   "origin": {
+    "title": "No-Take Zones in the Galapagos Marine Reserve, Zoning plan 2000",
+    "creator": "Moity, Nicolas",
+    "publisher": "PANGAEA",
+    "published": "2018-02-27",
+    "doi": "10.1594/PANGAEA.886891",
+    "url": "https://doi.pangaea.de/10.1594/PANGAEA.886891",
+    "download_url": "https://hs.pangaea.de/Maps/GMR/GMR_Zoning2000_NTZ.zip",
+    "license": "Creative Commons Attribution Share Alike 3.0 Unported (CC BY-SA 3.0)",
+    "related_publication": "Evaluation of No-Take Zones in the Galapagos Marine Reserve, Zoning Plan 2000. Frontiers in Marine Science (2018), https://doi.org/10.3389/fmars.2018.00244",
+    "checksum_sha256": "5d8383f5577f9d4da154d8094b4949edb92e17484e58298d7c8b7846af328766",
+    "citation": "Moity, Nicolas (2018): No-Take Zones in the Galapagos Marine Reserve, Zoning plan 2000. PANGAEA, https://doi.org/10.1594/PANGAEA.886891"
+   },
+   "query": {
+    "filter": null,
+    "rows": 60
+   }
+  },
+  "protectedseas": {
+   "id": "a608f54b-75c7-4df9-a3a8-cedbfa391873",
+   "name": "ProtectedSeas Navigator V2 — Focused: Area-Based Protections",
+   "url": "https://app.hubocean.earth/catalog/dataset/a608f54b-75c7-4df9-a3a8-cedbfa391873",
+   "provider": "ProtectedSeas",
+   "license": "CC-BY-4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "citations": [
+    {
+     "text": "ProtectedSeas® Navigator GIS layers are provided on the Ocean Data Platform under the license CC-BY-4.0",
+     "link": ""
+    }
+   ],
+   "documentation": [
+    "https://navigatormap.org/",
+    "https://navigatormap.org/methodology/",
+    "https://navigatormap.org/data-attributes/"
+   ],
+   "constraints": [],
+   "visibility": "public",
+   "updated_at": "2026-10-19T10:09:06.34028Z",
+   "collection": {
+    "id": "a8228453-d089-433b-90e1-92fe9c2aa7e1",
+    "name": "ProtectedSeas Navigator - Global Marine Life Protections",
+    "url": "https://app.hubocean.earth/catalog/collection/a8228453-d089-433b-90e1-92fe9c2aa7e1"
+   },
+   "description": "Navigator is the most comprehensive global map of marine life protections, with regulatory information for marine protected areas (MPAs) and marine managed areas (MMAs) worldwide. It catalogs boundary and regulation information for maritime areas that manage the extraction of natural living resources. Navigator enables comparisons through standardized ratings of fishing protection for each area, providing actionable insights into the state of conservation of the global ocean.\n\nThis version refines the dataset by excluding large-scale jurisdictional and fishery management zones (category_type = \"Jurisdictional Authority Area\", \"Fisheries Management Area\") as well as entries classified under country = \"Global\", \"High Seas / International\". The result is a more focused and performant view of localized marine protections. The complete database, which includes all area categories, is linked below.",
+   "parent": {
+    "id": "6fdd5db8-4866-4634-9011-d7591ae7ddc4",
+    "name": "ProtectedSeas Navigator V2 — Complete Global Database",
+    "url": "https://app.hubocean.earth/catalog/dataset/6fdd5db8-4866-4634-9011-d7591ae7ddc4",
+    "provider": "ProtectedSeas",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "citations": [
+     {
+      "text": "ProtectedSeas® Navigator GIS layers are provided on the Ocean Data Platform under the license CC-BY-4.0",
+      "link": ""
+     }
+    ],
+    "documentation": [
+     "https://navigatormap.org/",
+     "https://navigatormap.org/methodology/",
+     "https://navigatormap.org/data-attributes/"
+    ],
+    "constraints": [],
+    "visibility": "public",
+    "updated_at": "2026-10-20T17:09:37.017294Z",
+    "collection": {
+     "id": "a8228453-d089-433b-90e1-92fe9c2aa7e1",
+     "name": "ProtectedSeas Navigator - Global Marine Life Protections",
+     "url": "https://app.hubocean.earth/catalog/collection/a8228453-d089-433b-90e1-92fe9c2aa7e1"
+    }
+   },
+   "origin": {
+    "title": "ProtectedSeas Navigator",
+    "publisher": "ProtectedSeas",
+    "url": "https://navigatormap.org/",
+    "methodology": [
+     "https://navigatormap.org/methodology/",
+     "https://navigatormap.org/data-attributes/"
+    ],
+    "source_updated": "2026-09-16T00:00:00",
+    "citation": "ProtectedSeas® Navigator GIS layers are provided on the Ocean Data Platform under the license CC-BY-4.0"
+   },
+   "query": {
+    "filter": "geometry within \"POLYGON ((-86 -4, -86 4, -95 4, -95 -4, -86 -4))\"",
+    "rows": 5
+   }
+  },
+  "gfw_yearly": {
+   "id": "5a873571-1f58-4257-b636-4571b669faf8",
+   "name": "GFW AIS-based Apparent Fishing Effort - yearly summary 2012-2024",
+   "url": "https://app.hubocean.earth/catalog/dataset/5a873571-1f58-4257-b636-4571b669faf8",
+   "provider": "HUB Ocean",
+   "license": "CC-BY-NC-4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "citations": [],
+   "documentation": [
+    "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+    "https://app.hubocean.earth/catalog/dataset/e10d9a76-1949-482d-9292-30b6ed4de9bb/gfw-fishing-effort-monthly"
+   ],
+   "constraints": [],
+   "visibility": "public",
+   "updated_at": "2026-10-19T18:49:56.390906Z",
+   "collection": {
+    "id": "443e136f-32c8-4f3c-aeb5-1272ba452a8d",
+    "name": "Global Fishing Watch - Ocean Monitoring",
+    "url": "https://app.hubocean.earth/catalog/collection/443e136f-32c8-4f3c-aeb5-1272ba452a8d"
+   },
+   "description": "This dataset is a derived summary of version 3.0 (March 2025 release) of the Global Fishing Watch apparent fishing effort dataset. A lightweight, wide-format spatial dataset with one row per 0.1°×0.1° grid cell, containing total vessel hours and fishing hours aggregated by year (2012–2024), Designed for fast map visualisation and year-over-year fishing effort comparisons.",
+   "parent": {
+    "id": "e10d9a76-1949-482d-9292-30b6ed4de9bb",
+    "name": "GFW AIS-based Apparent Fishing Effort - monthly - source data v3.0",
+    "url": "https://app.hubocean.earth/catalog/dataset/e10d9a76-1949-482d-9292-30b6ed4de9bb",
+    "provider": "Global Fishing Watch",
+    "license": "CC-BY-NC-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "citations": [
+     {
+      "text": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0.",
+      "link": "https://doi.org/10.5281/zenodo.14982712"
+     }
+    ],
+    "documentation": [
+     "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+     "https://doi.org/10.5281/zenodo.14982712"
+    ],
+    "constraints": [
+     "Copyright Global Fishing Watch. Non-Commercial Use Only. The Site and the Services are provided for Non-Commercial use only in accordance with the CC BY-NC 4.0 license. If you would like to use the Site and/or the Services for commercial purposes, please contact us at support@globalfishingwatch.org."
+    ],
+    "visibility": "public",
+    "updated_at": "2026-10-15T15:12:23.978882Z",
+    "collection": {
+     "id": "443e136f-32c8-4f3c-aeb5-1272ba452a8d",
+     "name": "Global Fishing Watch - Ocean Monitoring",
+     "url": "https://app.hubocean.earth/catalog/collection/443e136f-32c8-4f3c-aeb5-1272ba452a8d"
+    }
+   },
+   "origin": {
+    "title": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0.",
+    "publisher": "Global Fishing Watch",
+    "url": "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+    "doi": "10.5281/zenodo.14982712",
+    "citation": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0."
+   },
+   "query": {
+    "filter": "geometry within \"POLYGON ((-87.32376133099982 -2.5945100731207336, -87.32376133099982 3.9957683290003048, -93.60764527199998 3.9957683290003048, -93.60764527199998 -2.5945100731207336, -87.32376133099982 -2.5945100731207336))\"",
+    "rows": 3705
+   }
+  },
+  "gfw_2024": {
+   "id": "6b84a740-926a-46e6-bc5e-01c5eac3c9b8",
+   "name": "GFW AIS-based Apparent Fishing Effort - 2024 - derived summary",
+   "url": "https://app.hubocean.earth/catalog/dataset/6b84a740-926a-46e6-bc5e-01c5eac3c9b8",
+   "provider": "HUB Ocean",
+   "license": "CC-BY-NC-4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "citations": [],
+   "documentation": [
+    "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+    "https://app.hubocean.earth/catalog/dataset/e10d9a76-1949-482d-9292-30b6ed4de9bb/gfw-fishing-effort-monthly"
+   ],
+   "constraints": [],
+   "visibility": "public",
+   "updated_at": "2026-10-21T14:03:49.786999Z",
+   "collection": {
+    "id": "443e136f-32c8-4f3c-aeb5-1272ba452a8d",
+    "name": "Global Fishing Watch - Ocean Monitoring",
+    "url": "https://app.hubocean.earth/catalog/collection/443e136f-32c8-4f3c-aeb5-1272ba452a8d"
+   },
+   "description": "This dataset is a derived summary of version 3.0 (March 2025 release) of the Global Fishing Watch apparent fishing effort dataset. GFW Fishing Effort 2024 Summary is a cell-level (0.1°×0.1° grid cell) annual summary of global fishing activity for 2024, containing aggregated AIS vessel presence, fishing effort, gear-type breakdowns, dominant gear and flag-state categories, and key activity metrics to support mapping, exploration, and analysis.",
+   "parent": {
+    "id": "e10d9a76-1949-482d-9292-30b6ed4de9bb",
+    "name": "GFW AIS-based Apparent Fishing Effort - monthly - source data v3.0",
+    "url": "https://app.hubocean.earth/catalog/dataset/e10d9a76-1949-482d-9292-30b6ed4de9bb",
+    "provider": "Global Fishing Watch",
+    "license": "CC-BY-NC-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "citations": [
+     {
+      "text": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0.",
+      "link": "https://doi.org/10.5281/zenodo.14982712"
+     }
+    ],
+    "documentation": [
+     "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+     "https://doi.org/10.5281/zenodo.14982712"
+    ],
+    "constraints": [
+     "Copyright Global Fishing Watch. Non-Commercial Use Only. The Site and the Services are provided for Non-Commercial use only in accordance with the CC BY-NC 4.0 license. If you would like to use the Site and/or the Services for commercial purposes, please contact us at support@globalfishingwatch.org."
+    ],
+    "visibility": "public",
+    "updated_at": "2026-10-15T15:12:23.978882Z",
+    "collection": {
+     "id": "443e136f-32c8-4f3c-aeb5-1272ba452a8d",
+     "name": "Global Fishing Watch - Ocean Monitoring",
+     "url": "https://app.hubocean.earth/catalog/collection/443e136f-32c8-4f3c-aeb5-1272ba452a8d"
+    }
+   },
+   "origin": {
+    "title": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0.",
+    "publisher": "Global Fishing Watch",
+    "url": "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+    "doi": "10.5281/zenodo.14982712",
+    "citation": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0."
+   },
+   "query": {
+    "filter": "geometry within \"POLYGON ((-87.32376133099982 -2.5945100731207336, -87.32376133099982 3.9957683290003048, -93.60764527199998 3.9957683290003048, -93.60764527199998 -2.5945100731207336, -87.32376133099982 -2.5945100731207336))\"",
+    "rows": 3076
+   }
+  },
+  "gfw_monthly": {
+   "id": "48a20311-3564-4045-b472-de775ecee31c",
+   "name": "GFW AIS-based Apparent Fishing Effort - monthly - derived summary",
+   "url": "https://app.hubocean.earth/catalog/dataset/48a20311-3564-4045-b472-de775ecee31c",
+   "provider": "HUB Ocean",
+   "license": "CC-BY-NC-4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "citations": [],
+   "documentation": [
+    "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+    "https://app.hubocean.earth/catalog/dataset/e10d9a76-1949-482d-9292-30b6ed4de9bb/gfw-fishing-effort-monthly"
+   ],
+   "constraints": [],
+   "visibility": "public",
+   "updated_at": "2026-10-18T15:10:55.296219Z",
+   "collection": {
+    "id": "443e136f-32c8-4f3c-aeb5-1272ba452a8d",
+    "name": "Global Fishing Watch - Ocean Monitoring",
+    "url": "https://app.hubocean.earth/catalog/collection/443e136f-32c8-4f3c-aeb5-1272ba452a8d"
+   },
+   "description": "This dataset is a derived summary of version 3.0 (March 2025 release) of the Global Fishing Watch apparent fishing effort dataset. Cell-level monthly summary of Global Fishing Watch AIS-derived fishing effort (2012–2024), with one row per 0.1° grid cell. Includes aggregated vessel presence hours and apparent fishing hours by month, plus activity summary fields for temporal analysis and mapping.",
+   "parent": {
+    "id": "e10d9a76-1949-482d-9292-30b6ed4de9bb",
+    "name": "GFW AIS-based Apparent Fishing Effort - monthly - source data v3.0",
+    "url": "https://app.hubocean.earth/catalog/dataset/e10d9a76-1949-482d-9292-30b6ed4de9bb",
+    "provider": "Global Fishing Watch",
+    "license": "CC-BY-NC-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "citations": [
+     {
+      "text": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0.",
+      "link": "https://doi.org/10.5281/zenodo.14982712"
+     }
+    ],
+    "documentation": [
+     "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+     "https://doi.org/10.5281/zenodo.14982712"
+    ],
+    "constraints": [
+     "Copyright Global Fishing Watch. Non-Commercial Use Only. The Site and the Services are provided for Non-Commercial use only in accordance with the CC BY-NC 4.0 license. If you would like to use the Site and/or the Services for commercial purposes, please contact us at support@globalfishingwatch.org."
+    ],
+    "visibility": "public",
+    "updated_at": "2026-10-15T15:12:23.978882Z",
+    "collection": {
+     "id": "443e136f-32c8-4f3c-aeb5-1272ba452a8d",
+     "name": "Global Fishing Watch - Ocean Monitoring",
+     "url": "https://app.hubocean.earth/catalog/collection/443e136f-32c8-4f3c-aeb5-1272ba452a8d"
+    }
+   },
+   "origin": {
+    "title": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0.",
+    "publisher": "Global Fishing Watch",
+    "url": "https://globalfishingwatch.org/data-download/datasets/public-fishing-effort",
+    "doi": "10.5281/zenodo.14982712",
+    "citation": "Global Fishing Watch. 2025. Global AIS-based Apparent Fishing Effort Dataset, Version 3.0."
+   },
+   "query": {
+    "filter": "geometry within \"POLYGON ((-87.32376133099982 -2.5945100731207336, -87.32376133099982 3.9957683290003048, -93.60764527199998 3.9957683290003048, -93.60764527199998 -2.5945100731207336, -87.32376133099982 -2.5945100731207336))\"",
+    "rows": 3705
+   }
+  }
+ },
+ "outputs": [
+  {
+   "file": "protected_areas.geojson",
+   "from": [
+    "protectedseas"
+   ],
+   "description": "ProtectedSeas polygons and rules; display geometry simplified to ~200 m.",
+   "bytes": 114546,
+   "sha256": "b7be77f7023fdb87bd982c19b9f015cabf33282d6751cf1888f836e15626f4fd"
+  },
+  {
+   "file": "ntz2000.geojson",
+   "from": [
+    "ntz2000",
+    "gfw_yearly"
+   ],
+   "description": "Zoning Plan 2000 no-take zones (display geometry ~30 m) with fishing hours in overlapping cells.",
+   "bytes": 109250,
+   "sha256": "75fdb229bca1f252a68579718431e5b9cc42b4c74886e6cf07afee92625f5eab"
+  },
+  {
+   "file": "fishing_cells.geojson",
+   "from": [
+    "gfw_yearly",
+    "gfw_2024"
+   ],
+   "description": "0.1° cells with any apparent fishing 2012–2024, yearly hours and 2024 top gear/flag.",
+   "bytes": 1267059,
+   "sha256": "88506076bb2a5554b81d67cbc05ac3905d1e6ae44f896d48da778948ad3bdfee"
+  },
+  {
+   "file": "features.json",
+   "from": [
+    "protectedseas",
+    "ntz2000"
+   ],
+   "description": "Attribute-only copies of the area and zone records for panels and briefings.",
+   "bytes": 41042,
+   "sha256": "a7fbfb0074ca04d0a4ad6f0edf73ea440f56ef334283729a8b6de68996c6b88e"
+  },
+  {
+   "file": "stats.json",
+   "from": [
+    "protectedseas",
+    "gfw_yearly",
+    "gfw_monthly",
+    "gfw_2024"
+   ],
+   "description": "Per-area inside/surrounding summaries computed from full-resolution boundaries.",
+   "bytes": 16582,
+   "sha256": "62c00af30e52424b1784bff838a5c339446bcd4e53c545a006f79ec2a4b58410"
+  }
+ ],
+ "counts": {
+  "protected_areas": 5,
+  "ntz2000": 60,
+  "grid_cells_fetched": 3705,
+  "grid_cells_with_fishing": 2895
+ },
+ "methods": [
+  "Protected areas: ProtectedSeas polygons fully within lon -95.0..-86.0, lat -4.0..4.0; invalid geometries repaired with make_valid.",
+  "Fishing effort: GFW 0.1° grid cells fully within the study box (protected areas' envelope + 0.6°).",
+  "A cell counts as 'inside' an area when its centroid falls inside the polygon; 'surrounding' = centroid in a 25 km ring outside the boundary (EPSG:6933).",
+  "Historical no-take zones: sum of fishing hours in every 0.1° cell that intersects the zone — far coarser than the zones themselves.",
+  "Top flags 2024 are approximate: built from each cell's top-3 flags only."
+ ]
+}
